@@ -30,7 +30,8 @@
         self.tweet.favoriteCount -= 1;
         
         // Update cell UI
-        self.likeButton.titleLabel.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+        NSString *favCount = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+        [self.likeButton setTitle:favCount forState:UIControlStateNormal];
         [self.likeButton setSelected:NO];
         
         // Send a POST request to the POST favorites/create endpoint
@@ -50,7 +51,8 @@
         self.tweet.favoriteCount += 1;
         
         // Update cell UI
-        self.likeButton.titleLabel.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+        NSString *favCount = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+        [self.likeButton setTitle:favCount forState:UIControlStateNormal];
         [self.likeButton setSelected:YES];
         
         // Send a POST request to the POST favorites/create endpoint
@@ -73,7 +75,8 @@
         self.tweet.retweetCount -= 1;
         
         // Update cell UI
-        self.retweetButton.titleLabel.text = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+        NSString *retweetCount = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+        [self.retweetButton setTitle:retweetCount forState:UIControlStateNormal];
         [self.retweetButton setSelected:NO];
         
         
@@ -94,7 +97,8 @@
         self.tweet.retweetCount += 1;
         
         // Update cell UI
-        self.retweetButton.titleLabel.text = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+        NSString *retweetCount = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+        [self.retweetButton setTitle:retweetCount forState:UIControlStateNormal];
         [self.retweetButton setSelected:YES];
         
         
