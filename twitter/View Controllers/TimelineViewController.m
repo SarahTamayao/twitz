@@ -58,10 +58,6 @@
             self.arrayofTweets = tweets;
             [self.tableView reloadData];
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-//            for (NSArray *dictionary in tweets) {
-//                NSString *text = dictionary[@"text"];
-//                NSLog(@"%@", text);
-//            }
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -86,14 +82,15 @@
 
 // Set each cell's elements: author, username, tweet, date, button counts
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
-    for (Tweet *tweet in self.arrayofTweets) {
-        NSLog(@"%@", tweet.text);
-    }
+//    for (Tweet *tweet in self.arrayofTweets) {
+//        NSLog(@"%@", tweet.text);
+//    }
     
     // Get and set the tweet for the cell
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     Tweet *tweet = self.arrayofTweets[indexPath.row];
     cell.tweet = tweet;
+    
     
     // Set User object attributes for the author labels
     cell.authorLabel.text = tweet.user.name;
@@ -121,6 +118,19 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profileImage.image = [[UIImage alloc] initWithData:urlData];
+    
+    // Set display of buttons
+    if (cell.tweet.favorited) {
+        [cell.likeButton setSelected:YES];
+    } else {
+        [cell.likeButton setSelected:NO];
+    }
+    
+    if (cell.tweet.retweeted) {
+        [cell.retweetButton setSelected:YES];
+    } else {
+        [cell.retweetButton setSelected:NO];
+    }
     
     return cell;
 }

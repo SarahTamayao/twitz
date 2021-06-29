@@ -24,7 +24,7 @@
 
 - (IBAction)didTapFavorite:(id)sender {
     // Unfavorite
-    if (self.likeButton.isSelected) {
+    if (self.tweet.favorited) {
         // Update the local tweet model
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
@@ -67,7 +67,7 @@
 
 - (IBAction)didTapRetweet:(id)sender {
     // Unretweet
-    if (self.retweetButton.isSelected) {
+    if (self.tweet.retweeted) {
         // Update the local tweet model
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
