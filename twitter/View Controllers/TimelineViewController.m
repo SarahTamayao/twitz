@@ -92,7 +92,11 @@
     
     // Set user object attributes
     cell.authorLabel.text = tweet.user.name;
-    cell.usernameLabel.text = tweet.user.screenName;
+    NSString* username = tweet.user.screenName;
+    // Append '@' to the beginning of the retrieved username
+    if (username) {
+        cell.usernameLabel.text = [@"@" stringByAppendingString:username];
+    }
     
     // Set tweet object attributes for labels
     cell.tweetLabel.text = tweet.text;
