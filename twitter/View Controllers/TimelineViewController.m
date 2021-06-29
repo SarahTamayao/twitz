@@ -11,8 +11,9 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TweetCell.h"
+#import "ComposeViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource>
+@interface TimelineViewController () <UITableViewDataSource, ComposeViewControllerDelegate, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayofTweets;
@@ -21,6 +22,21 @@
 @end
 
 @implementation TimelineViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.dataSource = self;
+    
+    // Get timeline
+    [self loadTweets];
+    
+    // For pull to refresh feature
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl setTintColor:[UIColor blackColor]];
+    [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
 
 // Method called when user taps the Sign Out button
 - (IBAction)signoutButton:(id)sender {
@@ -53,19 +69,9 @@
     [self.refreshControl endRefreshing];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.tableView.dataSource = self;
-    
-    // Get timeline
-    [self loadTweets];
-    
-    // For pull to refresh feature
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl setTintColor:[UIColor blackColor]];
-    [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+- (void)didTweet:(Tweet *)tweet {
+    [self.arrayofTweets addObject:tweet];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,13 +90,12 @@
         NSLog(@"%@", tweet.text);
     }
     
-    // Get the tweet
+    // Get and set the tweet for the cell
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     Tweet *tweet = self.arrayofTweets[indexPath.row];
     cell.tweet = tweet;
     
-    
-    // Set user object attributes
+    // Set User object attributes for the author labels
     cell.authorLabel.text = tweet.user.name;
     NSString* username = tweet.user.screenName;
     // Append '@' to the beginning of the retrieved username
@@ -98,11 +103,11 @@
         cell.usernameLabel.text = [@"@" stringByAppendingString:username];
     }
     
-    // Set tweet object attributes for labels
+    // Set Tweet object attributes for labels
     cell.tweetLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAtString;
     
-    // Set tweet object attributes for buttons
+    // Set Tweet object attributes for buttons
     NSString* reply = [NSString stringWithFormat:@"%i", tweet.repliedCount];
     NSString* retweet = [NSString stringWithFormat:@"%i", tweet.retweetCount];
     NSString* favorite = [NSString stringWithFormat:@"%i", tweet.favoriteCount];
@@ -120,15 +125,18 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
-*/
 
 
 @end

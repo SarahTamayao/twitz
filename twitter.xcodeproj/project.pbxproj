@@ -21,6 +21,7 @@
 		782E498F268A74B3009D2ED5 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E498E268A74B3009D2ED5 /* TweetCell.m */; };
 		782E4998268A7C3D009D2ED5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E4997268A7C3D009D2ED5 /* User.m */; };
 		782E499B268A7C84009D2ED5 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E499A268A7C84009D2ED5 /* Tweet.m */; };
+		782E499E268AB258009D2ED5 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E499D268AB258009D2ED5 /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		782E4997268A7C3D009D2ED5 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		782E4999268A7C84009D2ED5 /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		782E499A268A7C84009D2ED5 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		782E499C268AB258009D2ED5 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,8 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
+				782E499C268AB258009D2ED5 /* ComposeViewController.h */,
+				782E499D268AB258009D2ED5 /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -256,6 +260,7 @@
 				782E499B268A7C84009D2ED5 /* Tweet.m in Sources */,
 				782E4998268A7C3D009D2ED5 /* User.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				782E499E268AB258009D2ED5 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,

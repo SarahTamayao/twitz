@@ -226,6 +226,11 @@
                                 <action selector="signoutButton:" destination="Lbl-k5-U4i" id="scz-mD-xGW"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="gqd-bP-opZ">
+                            <connections>
+                                <segue destination="W7p-wi-1Ra" kind="presentation" id="i3a-ON-OUU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="yqh-1F-dQp" id="wLY-ig-n6z"/>
@@ -253,15 +258,84 @@
             </objects>
             <point key="canvasLocation" x="860" y="36.431784107946029"/>
         </scene>
+        <!--Compose Tweet-->
+        <scene sceneID="QJK-oA-Ree">
+            <objects>
+                <viewController id="HMB-kq-nAV" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9e6-qW-tib">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="67v-iH-YbF">
+                                <rect key="frame" x="20" y="76" width="350" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="AN7-Nx-G8O"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jJw-xa-vFJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="67v-iH-YbF" firstAttribute="leading" secondItem="jJw-xa-vFJ" secondAttribute="leading" constant="20" id="6iZ-VJ-l1R"/>
+                            <constraint firstItem="67v-iH-YbF" firstAttribute="top" secondItem="jJw-xa-vFJ" secondAttribute="top" constant="20" id="LF5-ti-oWB"/>
+                            <constraint firstItem="jJw-xa-vFJ" firstAttribute="trailing" secondItem="67v-iH-YbF" secondAttribute="trailing" constant="20" id="yVI-Ro-jlj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Compose Tweet" id="X2x-JS-Cad">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="w7g-NZ-urj">
+                            <connections>
+                                <action selector="cancelButton:" destination="HMB-kq-nAV" id="Zz5-GF-O0B"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="8Vs-Ec-NuB">
+                            <connections>
+                                <action selector="tweetButton:" destination="HMB-kq-nAV" id="sdO-as-MMc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="composeTweet" destination="67v-iH-YbF" id="UYb-Ap-K59"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gr-2D-cqf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2613.8461538461538" y="841.70616113744074"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="K9K-cW-cTr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W7p-wi-1Ra" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXS-8T-64x">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HMB-kq-nAV" kind="relationship" relationship="rootViewController" id="Kl8-fi-rFK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xrf-hn-sif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1658" y="842"/>
+        </scene>
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="favor-icon-red" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="retweet-icon-green" width="30" height="30"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
