@@ -147,12 +147,12 @@
     // For details view segue
     if ([[segue identifier] isEqualToString:@"detailViewSegue"]) {
         // Get the Tweet associated with the cell to bring to the details view
-//        UITableViewCell *tappedCell = sender;
-//        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-//        Tweet *tweet = self.arrayofTweets[indexPath.row];
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweet = self.arrayofTweets[indexPath.row];
         
         DetailsViewController *detailController = [segue destinationViewController];
-//        detailController.tweet = tweet;
+        detailController.tweet = tweet;
     
     // For compose tweet segue
     } else {

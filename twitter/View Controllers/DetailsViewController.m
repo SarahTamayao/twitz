@@ -26,7 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    self.authorLabel.text = self.tweet.user.name;
+    self.usernameLabel.text = self.tweet.user.screenName;
+    self.tweetLabel.text = self.tweet.text;
+    self.timeLabel.text = self.tweet.time;
+    self.dateLabel.text = self.tweet.date;
+    
+    // Set Tweet object attributes for buttons
+    NSString* retweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+    NSString* favorite = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+    
+    [self.retweetButton setTitle:retweet forState:UIControlStateNormal];
+    [self.favoriteButton setTitle:favorite forState:UIControlStateNormal];
 }
 
 /*

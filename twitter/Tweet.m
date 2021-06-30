@@ -45,6 +45,16 @@
          NSDate *date = [formatter dateFromString:createdAtOriginalString];
          // Convert Date to String using DateTool relative time
          self.createdAtString = date.shortTimeAgoSinceNow;
+         
+         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+         [dateFormat setDateFormat:@"MM/dd/yy"];
+         NSString *dateString = [dateFormat stringFromDate:date];
+         self.date = dateString;
+         
+         NSDateFormatter *timeFormatter = [[NSDateFormatter alloc]init];
+         timeFormatter.dateFormat = @"HH:mm:ss";
+         NSString *timeString = [timeFormatter stringFromDate:date];
+         self.time = timeString;
      }
      return self;
  }
