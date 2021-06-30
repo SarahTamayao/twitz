@@ -49,7 +49,7 @@
     self.retweetCount.text = retweet;
     self.favoriteCount.text = favorite;
     
-    // Set the user's profile image
+    // Set the user's profile image and embedded image if present
     NSString *URLString = self.tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];

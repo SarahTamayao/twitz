@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *createdAtString; // Display relative time
 @property (nonatomic, strong) NSString *date; // Display date
 @property (nonatomic, strong) NSString *time; // Display time
+@property (nonatomic, strong) NSString *mediaUrl; // Embedded image url
+
 
 // For Retweets
 @property (nonatomic, strong) User *retweetedByUser;  // user who retweeted if tweet is retweet

@@ -13,6 +13,7 @@
 #import "TweetCell.h"
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface TimelineViewController () <UITableViewDataSource, ComposeViewControllerDelegate, UITableViewDelegate>
 
@@ -114,11 +115,14 @@
     [cell.retweetButton setTitle:retweet forState:UIControlStateNormal];
     [cell.likeButton setTitle:favorite forState:UIControlStateNormal];
     
-    // Set the user's profile image
+    // Set the user's profile image and embedded media image if present
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profileImage.image = [[UIImage alloc] initWithData:urlData];
+    
+    NSURL *mediaURL = [NSURL URLWithString:tweet.mediaUrl];
+    [cell.tweetImage setImageWithURL:mediaURL];
     
     // Set display of buttons
     if (cell.tweet.favorited) {
@@ -136,6 +140,23 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
+
+//// For infinite loading tweets
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if(indexPath.row + 1 == [self.arrayofTweets count]){
+//        [self loadTweets:[self.arrayofTweets count] + 20];
+//        [self.tableView reloadData];
+//    }
+//}
 
 #pragma mark - Navigation
 

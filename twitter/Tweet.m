@@ -32,6 +32,11 @@
          self.retweeted = [dictionary[@"retweeted"] boolValue];
          self.repliedCount =[dictionary[@"reply_count"] intValue];
          
+         NSDictionary *dic = dictionary[@"entities"];
+         if (dic[@"media"] != nil) {
+             self.mediaUrl = dic[@"media"][0][@"media_url_https"];
+         }
+         
          // initialize user
          NSDictionary *user = dictionary[@"user"];
          self.user = [[User alloc] initWithDictionary:user];
