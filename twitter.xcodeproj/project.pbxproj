@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		782E4998268A7C3D009D2ED5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E4997268A7C3D009D2ED5 /* User.m */; };
 		782E499B268A7C84009D2ED5 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E499A268A7C84009D2ED5 /* Tweet.m */; };
 		782E499E268AB258009D2ED5 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 782E499D268AB258009D2ED5 /* ComposeViewController.m */; };
+		7893E4BE268BF355000EC809 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7893E4BD268BF355000EC809 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		782E499A268A7C84009D2ED5 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		782E499C268AB258009D2ED5 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		782E499D268AB258009D2ED5 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		7893E4BC268BF355000EC809 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		7893E4BD268BF355000EC809 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				782E499C268AB258009D2ED5 /* ComposeViewController.h */,
 				782E499D268AB258009D2ED5 /* ComposeViewController.m */,
+				7893E4BC268BF355000EC809 /* DetailsViewController.h */,
+				7893E4BD268BF355000EC809 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			files = (
 				782E499B268A7C84009D2ED5 /* Tweet.m in Sources */,
 				782E4998268A7C3D009D2ED5 /* User.m in Sources */,
+				7893E4BE268BF355000EC809 /* DetailsViewController.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				782E499E268AB258009D2ED5 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
