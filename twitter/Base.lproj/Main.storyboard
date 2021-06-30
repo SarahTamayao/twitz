@@ -268,13 +268,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@xyz016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6X1-EA-fWB">
-                                <rect key="frame" x="82" y="139" width="298" height="20.333333333333343"/>
+                                <rect key="frame" x="82" y="139" width="292" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" red="0.46868204333118557" green="0.46868204333118557" blue="0.46868204333118557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today is June 29, 2021. as;dfkjasdf;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUf-jK-SZo">
-                                <rect key="frame" x="16" y="173" width="364" height="20.333333333333343"/>
+                                <rect key="frame" x="16" y="173" width="358" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -457,12 +457,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e67-0R-UO0">
+                                <rect key="frame" x="329" y="392" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jJw-xa-vFJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="67v-iH-YbF" firstAttribute="leading" secondItem="jJw-xa-vFJ" secondAttribute="leading" constant="20" id="6iZ-VJ-l1R"/>
+                            <constraint firstItem="jJw-xa-vFJ" firstAttribute="trailing" secondItem="e67-0R-UO0" secondAttribute="trailing" constant="20" id="Fia-9t-RuS"/>
                             <constraint firstItem="67v-iH-YbF" firstAttribute="top" secondItem="jJw-xa-vFJ" secondAttribute="top" constant="20" id="LF5-ti-oWB"/>
+                            <constraint firstItem="e67-0R-UO0" firstAttribute="top" secondItem="67v-iH-YbF" secondAttribute="bottom" constant="16" id="g4z-fS-moP"/>
                             <constraint firstItem="jJw-xa-vFJ" firstAttribute="trailing" secondItem="67v-iH-YbF" secondAttribute="trailing" constant="20" id="yVI-Ro-jlj"/>
                         </constraints>
                     </view>
@@ -479,6 +487,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="charCount" destination="e67-0R-UO0" id="5jt-R5-WQI"/>
                         <outlet property="composeTweet" destination="67v-iH-YbF" id="UYb-Ap-K59"/>
                     </connections>
                 </viewController>
