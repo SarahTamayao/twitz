@@ -28,7 +28,11 @@
     
     // Set profile labels
     self.name.text = self.user.name;
-    self.username.text = self.user.screenName;
+    NSString* username = self.user.screenName;
+    // Append '@' to the beginning of the retrieved username
+    if (username) {
+        self.username.text = [@"@" stringByAppendingString:username];
+    }
     
     NSString *tweets = [self.user.tweetCount stringValue];
     NSString *followers = [self.user.followerCount stringValue];

@@ -55,15 +55,6 @@
 
 // Tweet button in navigation bar
 - (IBAction)tweetButton:(id)sender {
-//    [[APIManager shared] postStatusWithText:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
-//        if (tweet) {
-//            NSLog(@"Success! Tweeted message");
-//            [self dismissViewControllerAnimated:true completion:nil];
-//        } else {
-//            NSLog(@"😫😫😫 Error composing tweet: %@", error.localizedDescription);
-//        }
-//    }];
-    
     // If user is composing a reply
     if (self.isReply) {
         [[APIManager shared]postStatusWithReply:self.tweet :self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
