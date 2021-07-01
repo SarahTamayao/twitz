@@ -26,8 +26,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (IBAction)didTapFavorite:(id)sender {
@@ -122,7 +120,7 @@
     }
 }
 
-
+// Gesture recognizer when user taps the profile image of a Tweet cell
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
     // Call method delegate
     [self.delegate tweetCell:self didTap:self.tweet.user];

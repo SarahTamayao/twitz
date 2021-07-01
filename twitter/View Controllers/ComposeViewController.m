@@ -31,29 +31,30 @@
     self.composeTweet.clipsToBounds = YES;
     self.composeTweet.layer.cornerRadius = 8.0f;
     
-    // Set initial character count of 0
-    self.charCount.text = @"0";
+    // Set initial characters left count of 140
+    self.charCount.text = @"140";
     
+    // For replies, set beginning of text to be @mention
     if (self.isReply) {
-        // For replies, set beginning of text to be @mention
         NSString* username = self.tweet.user.screenName;
         // Append '@' to the beginning of the retrieved username
         if (username) {
             self.composeTweet.text = [@"@" stringByAppendingString:username];
         }
+    
+    // For new Tweets, set placeholder text for the compose tweet box
     } else {
-        // Set placeholder text for the compose tweet box
         self.composeTweet.text = @"What's happening?";
         self.composeTweet.textColor = [UIColor lightGrayColor];
     }
 }
 
-// Cancel button in navigation bar
+// Clicking cancel button in navigation bar dismisses compose view controller (goes to timeline)
 - (IBAction)cancelButton:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
-// Tweet button in navigation bar
+// Clicking Tweet button in navigation bar posts the Tweet and dismisses compose view controller (goes to timeline)
 - (IBAction)tweetButton:(id)sender {
     // If user is composing a reply
     if (self.isReply) {
@@ -109,7 +110,7 @@
     }
 }
 
-// For character count feature
+// Displays characters left as the user types a Tweet at the bottom right corner of the compose box
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     // Set the max character limit
     int characterLimit = 140;
@@ -117,11 +118,16 @@
     // Construct what the new text would be if we allowed the user's latest edit
     NSString *newText = [self.composeTweet.text stringByReplacingCharactersInRange:range withString:text];
     
-    // Update character count label
-    NSString* characters = [NSString stringWithFormat:@"%i", newText.length];
+    // Update characters left count label. Set label text to red if characters left count < 20
+    int charLeft = 140 - newText.length;
+    NSString* characters = [NSString stringWithFormat:@"%i", charLeft];
+    
+    if (charLeft < 20) {
+        self.charCount.textColor = UIColor.redColor;
+    }
     self.charCount.text = characters;
     
-    // Allow or disallow the new text
+    // Allow or disallow the new text based on the character limit
     return newText.length < characterLimit;
 }
 

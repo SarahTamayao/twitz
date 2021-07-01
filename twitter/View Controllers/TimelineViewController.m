@@ -49,12 +49,11 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
     
-    // check
     // Clear out the access tokens
     [[APIManager shared] logout];
 }
 
-// Get timeline
+// Get timeline of Tweets for the user
 - (void) loadTweets {
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -68,8 +67,8 @@
     [self.refreshControl endRefreshing];
 }
 
+// If user just tweeted something, add it to the top of the timeline. New tweet visible immediately after dismissing the compose view.
 - (void)didTweet:(Tweet *)tweet {
-//    [self.arrayofTweets insertObject:atIndex:0:tweet];
     [self.arrayofTweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
 }
@@ -84,12 +83,8 @@
     return self.arrayofTweets.count;
 }
 
-// Set each cell's elements: author, username, tweet, date, button counts
+// Set each cell's elements: author, username, tweet, date, button counts, profile image, embedded image
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
-//    for (Tweet *tweet in self.arrayofTweets) {
-//        NSLog(@"%@", tweet.text);
-//    }
-    
     // Get and set the tweet for the cell
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     Tweet *tweet = self.arrayofTweets[indexPath.row];
@@ -117,22 +112,18 @@
     [cell.retweetButton setTitle:retweet forState:UIControlStateNormal];
     [cell.likeButton setTitle:favorite forState:UIControlStateNormal];
     
-    // Set the user's profile image and embedded media image if present
+    // Set the user's profile image
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profileImage.image = [[UIImage alloc] initWithData:urlData];
     
+    // Set embedded media image if present
     cell.tweetImage.image = nil;
     if (tweet.mediaUrl) {
         NSURL *mediaURL = [NSURL URLWithString:tweet.mediaUrl];
         NSData *urlData = [NSData dataWithContentsOfURL:mediaURL];
         cell.tweetImage.image = [UIImage imageWithData:urlData];
-//        [cell.tweetImage setImageWithURL:mediaURL];
-//        cell.tweetImage.frame = CGRectMake(cell.tweetImage.frame.origin.x, cell.tweetImage.frame.origin.y, 50, 50);
-//
-//        cell.tweetImage.contentMode = UIViewContentModeBottomLeft; // This determines position of image
-//        cell.tweetImage.clipsToBounds = YES;
     }
     
     // Set display of buttons
@@ -148,10 +139,16 @@
         [cell.retweetButton setSelected:NO];
     }
     
-    // Set tag of reply button (to access tweet)
+    // Set tag of reply button to self.arrayOfTweets index (to access parent tweet after segue to compose view)
     cell.replyButton.tag = indexPath.row;
     
     return cell;
+}
+
+// Segue when user taps the profile image of a tweet. Passes the User data to the profile page
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    // Perform segue to profile view controller
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,11 +159,6 @@
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension;
-}
-
-- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
-    // Perform segue to profile view controller
-    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 
 //// For infinite loading tweets
@@ -197,21 +189,24 @@
     // For profile view segue
     } else if ([[segue identifier] isEqualToString:@"profileSegue"]) {
         ProfileViewController *profileController = [segue destinationViewController];
-//        ProfileViewController *profileController = (ProfileViewController*)navigationController.topViewController;
         profileController.user = sender;
     
-    // For compose tweet (composeSegue) and reply tweet (replySegue)
+    // For compose tweet (composeSegue) and reply tweet (replySegue): same destination = compose view controller
     } else {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
         
-        // Pass bool representing whether user is composing a reply through segue
+        
+        // Pass data to compose view controller: whether user is replying or tweeting, parent tweet for reply only
         if ([[segue identifier] isEqualToString:@"replySegue"]) {
             composeController.isReply = TRUE;
+            
+            // Retrieve the parent tweet to pass to compose view
             UIButton *replyButton = sender;
             Tweet *tweet = self.arrayofTweets[replyButton.tag];
             composeController.tweet = tweet;
+            
         } else {
             composeController.isReply = FALSE;
         }

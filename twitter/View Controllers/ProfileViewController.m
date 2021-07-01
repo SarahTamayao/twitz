@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Set profile labels
+    // Set labels: name, username, basic stats (tweet count, follower count, following count)
     self.name.text = self.user.name;
     NSString* username = self.user.screenName;
     // Append '@' to the beginning of the retrieved username
