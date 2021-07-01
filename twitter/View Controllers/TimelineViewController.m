@@ -14,8 +14,9 @@
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "ProfileViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource, ComposeViewControllerDelegate, UITableViewDelegate>
+@interface TimelineViewController () <UITableViewDataSource, ComposeViewControllerDelegate, UITableViewDelegate, TweetCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayofTweets;
@@ -30,14 +31,14 @@
     
     self.tableView.dataSource = self;
     
-    // Get timeline
-    [self loadTweets];
-    
     // For pull to refresh feature
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl setTintColor:[UIColor blackColor]];
     [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    // Get timeline
+    [self loadTweets];
 }
 
 // Method called when user taps the Sign Out button
@@ -92,7 +93,7 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     Tweet *tweet = self.arrayofTweets[indexPath.row];
     cell.tweet = tweet;
-    
+    cell.delegate = self;    
     
     // Set User object attributes for the author labels
     cell.authorLabel.text = tweet.user.name;
@@ -121,8 +122,14 @@
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profileImage.image = [[UIImage alloc] initWithData:urlData];
     
-    NSURL *mediaURL = [NSURL URLWithString:tweet.mediaUrl];
-    [cell.tweetImage setImageWithURL:mediaURL];
+    if (tweet.mediaUrl) {
+        NSURL *mediaURL = [NSURL URLWithString:tweet.mediaUrl];
+        [cell.tweetImage setImageWithURL:mediaURL];
+//        cell.tweetImage.frame = CGRectMake(cell.tweetImage.frame.origin.x, cell.tweetImage.frame.origin.y, 50, 50);
+//
+//        cell.tweetImage.contentMode = UIViewContentModeBottomLeft; // This determines position of image
+//        cell.tweetImage.clipsToBounds = YES;
+    }
     
     // Set display of buttons
     if (cell.tweet.favorited) {
@@ -137,6 +144,9 @@
         [cell.retweetButton setSelected:NO];
     }
     
+    // Set tag of reply button (to access tweet)
+    cell.replyButton.tag = indexPath.row;
+    
     return cell;
 }
 
@@ -148,6 +158,11 @@
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension;
+}
+
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    // Perform segue to profile view controller
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 
 //// For infinite loading tweets
@@ -175,11 +190,27 @@
         DetailsViewController *detailController = [segue destinationViewController];
         detailController.tweet = tweet;
     
-    // For compose tweet segue
+    // For profile view segue
+    } else if ([[segue identifier] isEqualToString:@"profileSegue"]) {
+        ProfileViewController *profileController = [segue destinationViewController];
+//        ProfileViewController *profileController = (ProfileViewController*)navigationController.topViewController;
+        profileController.user = sender;
+    
+    // For compose tweet (composeSegue) and reply tweet (replySegue)
     } else {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
+        
+        // Pass bool representing whether user is composing a reply through segue
+        if ([[segue identifier] isEqualToString:@"replySegue"]) {
+            composeController.isReply = TRUE;
+            UIButton *replyButton = sender;
+            Tweet *tweet = self.arrayofTweets[replyButton.tag];
+            composeController.tweet = tweet;
+        } else {
+            composeController.isReply = FALSE;
+        }
     }
 }
 

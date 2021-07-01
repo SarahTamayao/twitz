@@ -35,6 +35,7 @@
          NSDictionary *dic = dictionary[@"entities"];
          if (dic[@"media"] != nil) {
              self.mediaUrl = dic[@"media"][0][@"media_url_https"];
+             self.hasMedia = TRUE;
          }
          
          // initialize user

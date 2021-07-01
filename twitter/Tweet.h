@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *date; // Display date
 @property (nonatomic, strong) NSString *time; // Display time
 @property (nonatomic, strong) NSString *mediaUrl; // Embedded image url
+@property (nonatomic) BOOL hasMedia;
 
 
 // For Retweets
