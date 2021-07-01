@@ -69,7 +69,8 @@
 }
 
 - (void)didTweet:(Tweet *)tweet {
-    [self.arrayofTweets addObject:tweet];
+//    [self.arrayofTweets insertObject:atIndex:0:tweet];
+    [self.arrayofTweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
 }
 
@@ -122,9 +123,12 @@
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profileImage.image = [[UIImage alloc] initWithData:urlData];
     
+    cell.tweetImage.image = nil;
     if (tweet.mediaUrl) {
         NSURL *mediaURL = [NSURL URLWithString:tweet.mediaUrl];
-        [cell.tweetImage setImageWithURL:mediaURL];
+        NSData *urlData = [NSData dataWithContentsOfURL:mediaURL];
+        cell.tweetImage.image = [UIImage imageWithData:urlData];
+//        [cell.tweetImage setImageWithURL:mediaURL];
 //        cell.tweetImage.frame = CGRectMake(cell.tweetImage.frame.origin.x, cell.tweetImage.frame.origin.y, 50, 50);
 //
 //        cell.tweetImage.contentMode = UIViewContentModeBottomLeft; // This determines position of image

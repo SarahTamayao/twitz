@@ -60,7 +60,7 @@
         [[APIManager shared]postStatusWithReply:self.tweet :self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
                 if(error){
                     NSLog(@"Error composing reply: %@", error.localizedDescription);
-                    [self dismissViewControllerAnimated:true completion:nil];
+//                    [self dismissViewControllerAnimated:true completion:nil];
                 }
                 else{
                     [self.delegate didTweet:tweet];
@@ -74,7 +74,7 @@
         [[APIManager shared]postStatusWithText:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
             if(error){
                 NSLog(@"Error composing Tweet: %@", error.localizedDescription);
-                [self dismissViewControllerAnimated:true completion:nil];
+//                [self dismissViewControllerAnimated:true completion:nil];
             }
             else{
                 [self.delegate didTweet:tweet];

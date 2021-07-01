@@ -224,7 +224,7 @@
                                                         <constraint firstAttribute="width" constant="56" id="PuM-or-ROq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1n-NG-fj5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" ambiguous="YES" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1n-NG-fj5">
                                                     <rect key="frame" x="79" y="11" width="92" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -298,16 +298,17 @@
                                                         <action selector="didTapRetweet:" destination="8Rf-0t-Tdh" eventType="touchUpInside" id="DdM-i7-iTU"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kig-2O-DJA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kig-2O-DJA">
                                                     <rect key="frame" x="79" y="40" width="302" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C9n-F4-es7">
-                                                    <rect key="frame" x="79" y="68.333333333333329" width="302" height="154.66666666666669"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9n-F4-es7">
+                                                    <rect key="frame" x="145" y="128" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Ngc-VR-JuL"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="0Al-6w-DrC"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="4bq-FZ-XEZ"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -325,19 +326,18 @@
                                                 <constraint firstItem="0vB-IB-Tkg" firstAttribute="top" secondItem="ORh-6i-Ni7" secondAttribute="top" id="SaQ-sa-2gh"/>
                                                 <constraint firstItem="elW-Lt-vIw" firstAttribute="top" secondItem="ORh-6i-Ni7" secondAttribute="top" id="Sbf-VH-4Nt"/>
                                                 <constraint firstItem="1YL-nR-ELq" firstAttribute="firstBaseline" secondItem="8Xz-mj-9OF" secondAttribute="firstBaseline" id="X5a-Zb-CF3"/>
-                                                <constraint firstItem="C9n-F4-es7" firstAttribute="leading" secondItem="kig-2O-DJA" secondAttribute="leading" id="adP-jW-ZF2"/>
+                                                <constraint firstItem="C9n-F4-es7" firstAttribute="centerX" secondItem="szo-8C-Yle" secondAttribute="centerX" id="arb-2v-IVx"/>
                                                 <constraint firstItem="jpe-13-gHB" firstAttribute="top" secondItem="szo-8C-Yle" secondAttribute="top" constant="11" id="e88-K2-EcZ"/>
                                                 <constraint firstItem="M1n-NG-fj5" firstAttribute="top" secondItem="szo-8C-Yle" secondAttribute="top" constant="11" id="fgy-c9-wXz"/>
                                                 <constraint firstItem="elW-Lt-vIw" firstAttribute="bottom" secondItem="ORh-6i-Ni7" secondAttribute="bottom" id="flr-i4-qeL"/>
                                                 <constraint firstItem="8Xz-mj-9OF" firstAttribute="firstBaseline" secondItem="M1n-NG-fj5" secondAttribute="firstBaseline" id="mNb-fo-iwW"/>
                                                 <constraint firstItem="kig-2O-DJA" firstAttribute="leading" secondItem="jpe-13-gHB" secondAttribute="trailing" constant="13" id="mu2-bs-UVv"/>
-                                                <constraint firstItem="C9n-F4-es7" firstAttribute="trailing" secondItem="kig-2O-DJA" secondAttribute="trailing" id="oz9-Lf-JG1"/>
                                                 <constraint firstItem="hHK-ne-XMR" firstAttribute="top" secondItem="ORh-6i-Ni7" secondAttribute="top" id="pvM-y9-HJd"/>
                                                 <constraint firstItem="1YL-nR-ELq" firstAttribute="trailing" secondItem="szo-8C-Yle" secondAttribute="trailingMargin" constant="9" id="qCT-JE-2rR"/>
                                                 <constraint firstItem="ORh-6i-Ni7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="szo-8C-Yle" secondAttribute="leading" constant="100" id="rMG-ai-1RE"/>
                                                 <constraint firstItem="0vB-IB-Tkg" firstAttribute="leading" secondItem="elW-Lt-vIw" secondAttribute="trailing" constant="30" id="x0g-Gd-0Nd"/>
                                                 <constraint firstItem="kig-2O-DJA" firstAttribute="top" secondItem="M1n-NG-fj5" secondAttribute="bottom" constant="8" id="xvA-VO-UYG"/>
-                                                <constraint firstItem="0vB-IB-Tkg" firstAttribute="top" secondItem="C9n-F4-es7" secondAttribute="bottom" constant="10" id="y3w-2o-Izg"/>
+                                                <constraint firstItem="0vB-IB-Tkg" firstAttribute="top" secondItem="C9n-F4-es7" secondAttribute="bottom" constant="5" id="y3w-2o-Izg"/>
                                                 <constraint firstItem="hHK-ne-XMR" firstAttribute="bottom" secondItem="ORh-6i-Ni7" secondAttribute="bottom" id="z9A-hj-uSY"/>
                                                 <constraint firstAttribute="trailing" secondItem="kig-2O-DJA" secondAttribute="trailing" constant="9" id="zmN-mG-bQt"/>
                                             </constraints>
