@@ -55,16 +55,16 @@
 
 // Tweet button in navigation bar
 - (IBAction)tweetButton:(id)sender {
-    [[APIManager shared] postStatusWithText:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
-        if (tweet) {
-            NSLog(@"Success! Tweeted message");
-            [self dismissViewControllerAnimated:true completion:nil];
-        } else {
-            NSLog(@"😫😫😫 Error composing tweet: %@", error.localizedDescription);
-        }
-    }];
+//    [[APIManager shared] postStatusWithText:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
+//        if (tweet) {
+//            NSLog(@"Success! Tweeted message");
+//            [self dismissViewControllerAnimated:true completion:nil];
+//        } else {
+//            NSLog(@"😫😫😫 Error composing tweet: %@", error.localizedDescription);
+//        }
+//    }];
     
-//     If user is composing a reply
+    // If user is composing a reply
     if (self.isReply) {
         [[APIManager shared]postStatusWithReply:self.tweet :self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
                 if(error){
@@ -78,7 +78,7 @@
                 }
             }];
 
-//     If user is composing a new tweet (not a reply)
+    // If user is composing a new tweet (not a reply)
     } else {
         [[APIManager shared]postStatusWithText:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -94,24 +94,7 @@
     }
 }
 
-// how to get parent tweet??
-//- (IBAction)didTapReply:(id)sender {
-//    [[APIManager shared]postStatusWithReply:self.tweet text:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
-//        if(error){
-//            NSLog(@"Error composing reply: %@", error.localizedDescription);
-//            [self dismissViewControllerAnimated:true completion:nil];
-//        }
-//        else{
-//            [self.delegate didTweet:tweet];
-//            [self dismissViewControllerAnimated:true completion:nil];
-//            NSLog(@"Compose reply Success!");
-//        }
-//    }];
-//}
-
-
-
-// For placeholder text (non-reply tweets), when user begins editing the compose tweet box
+// Clear placeholder text when user begins editing the compose tweet box (for non-reply tweets)
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     if (!self.isReply) {
