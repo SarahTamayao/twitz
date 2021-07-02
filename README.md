@@ -92,7 +92,7 @@ I struggled with the embedded image story as I didn't know that the mediaURL in 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
-- [DateTools] (https://github.com/MatthewYork/DateTools) - streamlines date and time handling in iOS
+- [DateTools](https://github.com/MatthewYork/DateTools) - streamlines date and time handling in iOS
 
 ## License
 
