@@ -49,7 +49,24 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
+1. App icon, launch screen, sign in, sign out:
 ![twitz_login_logout](login-logout.gif) / ! [](login-logout.gif)
+
+2. Like, retweet, unlike, unretweet (in both timeline and detail views), profile pages of tweet authors
+![twitz_like_retweet_profile](like-retweet-profile.gif) / ! [](like-retweet-profile.gif)
+
+3. Replying to a tweet, composing a new tweet, and "x characters left" count in compose view
+![twitz_compose_reply_character](tweet-reply-character.gif) / ! [](tweet-reply-character.gif)
+
+4. Autolayout for all views: device rotations [iPhone 11 Pro Max]
+![twitz_autolayout](twitz-autolayout.gif) / ! [](twitz-autolayout.gif)
+
+5. Autolayout using other devices [iPhone 11, iPhone 11 Pro]
+![twitz_autolayout_devices](autolayout-devices.gif) / ! [](autolayout-devices.gif)
+
+6. Main functionalities (gif #2 and gif #3 combined, lower quality)
+![twitz_main](twitz-main.gif) / ! [](twitz-main.gif)
+
 
 
 GIF created with [ezgif](https://ezgif.com).
