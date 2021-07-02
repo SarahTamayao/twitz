@@ -54,7 +54,7 @@ Here's a walkthrough of implemented user stories:
 
 ![twitz_login_logout](login-logout.gif) / ! [](login-logout.gif)
 
-2. Like, retweet, unlike, unretweet (in both timeline and detail views), profile pages of tweet authors
+2. Like, retweet, unlike, unretweet (from both timeline and detail views), profile pages of tweet authors
 
 
 ![twitz_like_retweet_profile](like-retweet-profile.gif) / ! [](like-retweet-profile.gif)
