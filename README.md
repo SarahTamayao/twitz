@@ -85,7 +85,7 @@ GIF created with [ezgif](https://ezgif.com).
 
 ## Notes
 
-I struggled with the embedded image story as I didn't know that the mediaURL in Twitter's API didn't apply to the cover pictures of links. Thanks so much to Eliel and Alexis from the teaching team for helping me debug this issue for basically the whole afternoon! :)
+I struggled with the embedded image story as I was unfamiliar with UIImageView constraints, and I didn't know that the mediaURL in Twitter's API excluded cover pictures of links. Thanks so much to Eliel and Alexis from the teaching team for helping me debug this issue for basically the whole afternoon! :)
 
 ## Credits
 
