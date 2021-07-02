@@ -27,11 +27,13 @@
     
     // Customize compose tweet view UI
     self.composeTweet.layer.borderWidth = 1.6f;
-    self.composeTweet.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    UIColor *twitterBlue = [UIColor colorWithRed:0.296 green:0.618 blue:0.922 alpha:1.0];
+    self.composeTweet.layer.borderColor = [twitterBlue CGColor];
     self.composeTweet.clipsToBounds = YES;
     self.composeTweet.layer.cornerRadius = 8.0f;
     
     // Set initial characters left count of 140
+    self.charCount.textColor = twitterBlue;
     self.charCount.text = @"140";
     
     // For replies, set beginning of text to be @mention
